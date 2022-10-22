@@ -9,8 +9,8 @@ $(document).ready(function(){
       nextArrow: $('.right'),
       appendDots: $('.buttons__left'),
       variableWidth: true,
-      adaptiveHeight: true
-  });
+      adaptiveHeight: true,
+    });
 
 });
 
