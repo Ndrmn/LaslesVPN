@@ -457,26 +457,41 @@
 .customers__block {
 	margin: 0 auto;
 	overflow: hidden;
-	padding-top: 30px;
-	padding-bottom: 60px;
+	// padding-top: 30px;
+	// padding-bottom: 60px;
 }
 
 .customers__cards {
-	width: 1750px;
+//	width: 1250px;
+	width: 100%;
 	display: flex;
 }
 .customers__card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 	width: 400px;
 	height: 230px;
 	border: 2px solid #DDDDDD;
 	border-radius: 10px;
 	padding: 30px;
-	margin-right: 50px;
+	margin-left: 25px;
+	margin-right: 25px;
 }
-.customers__redCard {
+.slick-slide.slick-current {
 	background: #FFFFFF;
 	border: 2px solid #F53838;
+	-webkit-box-shadow: 0px 64px 23px -32px rgba(13, 16, 37, 0.05);
+	-moz-box-shadow: 0px 64px 23px -32px rgba(13, 16, 37, 0.05);
+	box-shadow: 0px 64px 23px -32px rgba(13, 16, 37, 0.05);
 }
+
+.slick-track {
+	display: flex;
+	padding-top: 30px;
+	padding-bottom: 60px;
+}
+
 .customer__user {
 	display: flex;
 	justify-content: space-between;
@@ -491,6 +506,7 @@
 	height: 50px;
 	border-radius: 50%;
 	margin-right: 20px;
+	overflow: hidden;
 }
 .customer__text {
 	display: flex;
@@ -549,21 +565,51 @@
 }
 .buttons__left {
 	display: flex;
+	// justify-content: space-between;
+	// width: 135px;
+}
+
+.slick-dots{
+	display: flex;
 	justify-content: space-between;
 	width: 135px;
 }
-.button_dot {
-	border-radius: 12.5px;
+.slick-dots ul{
+	list-style: none;
+}
+// .button_dot {
+// 	border-radius: 12.5px;
+// 	width: 15px;
+// 	height: 15px;
+// 	background: #DDE0E4;
+// }
+
+.slick-dots button {
+	border-radius: 7.5px;
 	width: 15px;
 	height: 15px;
 	background: #DDE0E4;
+	max-width: 45px;
+	transition: 0.5s;
+	font-size: 0;
 }
-.button_redDot {
-	border-radius: 12.5px;
+
+
+// .button_redDot {
+// 	border-radius: 12.5px;
+// 	width: 45px;
+// 	height: 15px;
+// 	background: #F53838;
+// }
+
+.slick-active button {
+	border-radius: 7.5px;
 	width: 45px;
 	height: 15px;
 	background: #F53838;
+	transition: 0.5s;
 }
+
 .buttons__right {
 	width: 140px;
 	display: flex;
@@ -756,3 +802,33 @@
 .footer__button a {
 	color: #4F5665;
 }
+
+//Mediarequests
+
+@media (max-width: 1024px) {
+
+	.block {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.header {
+		flex-wrap: wrap;
+	}
+	.header__logo {
+		order: 1;
+	}
+	.header__nav {
+		order: 3;
+	}
+	.header_sign {
+		order: 2;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.block {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
