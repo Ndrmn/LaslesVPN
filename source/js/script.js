@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('.customers__cards').slick({
+  $('.customers__block').slick({
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -14,3 +14,18 @@ $(document).ready(function(){
 
 });
 
+let menuButton = document.querySelector('.header__menuButton');
+let menuList = document.querySelector('.header__menu');
+
+menuButton.addEventListener('click', function() {
+  if (menuList.classList.contains('hidden')) {
+    menuList.classList.remove('hidden');
+    menuButton.classList.remove('icon__close');
+    menuButton.classList.add('icon__open');
+  } else {
+    menuList.classList.add('hidden');
+    menuButton.classList.add('icon__close');
+    menuButton.classList.remove('icon__open');
+  }
+  
+});
