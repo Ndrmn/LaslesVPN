@@ -806,7 +806,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 135px;
+  max-width: 20%;
 }
 
 .slick-dots ul {
@@ -822,6 +822,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   font-size: 0;
+  margin: 0px 2px;
 }
 
 .slick-active button {
