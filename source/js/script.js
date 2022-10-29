@@ -53,6 +53,36 @@ async function loadInfo () {
     starImage.className = 'img';
     starImage.src = "img/star.svg";
 
+    let comentWrapper = document.createElement('div');
+    comentWrapper.className = 'comentWrapper';
+
+    let coment = document.createElement('span');
+    coment.className = 'customer__comment';
+    coment.classList.add('visibleComent');
+    coment.innerText = `"${json[i].message}"`;
+
+    let comentSmall = document.createElement('span');
+    comentSmall.className = 'customer__comment';
+    comentSmall.classList.add('hiddenComent');
+
+    if (json[i].message.length > 62) {
+      comentSmall.innerText = `"${json[i].message.slice(0, 61)} ... `;
+    } else {
+      comentSmall.innerText = coment.innerText;
+    };
+
+
+    let more = document.createElement('span');
+    more.className = 'more';
+    more.innerText = 'more';
+
+    let drop = document.createElement('p');
+    drop.className = 'drop';
+    drop.innerText = `"${json[i].message}"`;
+
+
+    
+
     rating.append(rate);
     rating.append(star);
     star.append(starImage);
@@ -64,12 +94,15 @@ async function loadInfo () {
     user.append(info);
     user.append(rating);
     card.append(user);
+    card.append(comentWrapper);
+    comentWrapper.append(coment);
+    comentWrapper.append(comentSmall);
 
-    let coment = document.createElement('p');
-    coment.className = 'customer__comment';
-    coment.innerText = `"${json[i].message}"`;
+    if (comentSmall.innerText != coment.innerText) {
+      comentWrapper.append(more);      
+    }
 
-    card.append(coment);
+    comentWrapper.append(drop);
 
     let cards = document.querySelector('.customers__block');
     cards.append(card);
@@ -102,7 +135,7 @@ var settings = {
   prevArrow: $('.left'),
   nextArrow: $('.right'),
   centerMode: true,
-  centerPadding: '100px',
+  centerPadding: '50px',
   responsive: [
     {
       breakpoint: 1024,
@@ -128,24 +161,44 @@ function setSlideVisibility() {
   });
 
   //Set the opacity of the first and last partial slides.
-  $(visibleSlides).first().prev().css('opacity', 0);
+  // $(visibleSlides).first().prev().css('opacity', 0);
 };
 
 // Menu
 
 let menuButton = document.querySelector('.header__menuButton');
-let menuList = document.querySelector('.header__menu');
-let menuArrow = document.querySelector('.arrow')
+let menuList = document.querySelector('.header__nav');
+let sign = document.querySelector('.header__sign');
+let burger = document.querySelector('.burger');
 
-menuButton.addEventListener('click', function() {
-  if (menuList.classList.contains('hidden')) {
-    menuList.classList.remove('hidden');
-    menuArrow.classList.remove('icon__close');
-    menuArrow.classList.add('icon__open');
-  } else {
-    menuList.classList.add('hidden');
-    menuArrow.classList.add('icon__close');
-    menuArrow.classList.remove('icon__open');
-  }
+function toggleClass () {
+    burger.classList.toggle('burger__close');
+    burger.classList.toggle('burger__open');
+    menuList.classList.toggle('hidden');
+    sign.classList.toggle('hidden');
+}
+
+
+
+menuButton.addEventListener('click', function(e) {
+
+    // burger.classList.toggle('burger__close');
+    // burger.classList.toggle('burger__open');
+    // menuList.classList.toggle('hidden');
+    // sign.classList.toggle('hidden');
+    e.stopPropagation();
+    toggleClass();
+});
+
+document.addEventListener('click', function (e) {
   
+  const target = e.target;
+  const thsmenu = target == menuList || menuList.contains(target);
+  const thssign = target == sign || sign.contains(target);
+  const menuIsActive = menuList.classList.contains('hidden');
+
+  if (!thsmenu && !menuIsActive && !thssign) {
+    toggleClass();
+  };
+
 });
